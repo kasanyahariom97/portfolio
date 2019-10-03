@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
@@ -10,15 +10,16 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  overflow: hidden;
 
   @media (max-width: 810px){
-    display: block;
-    height: auto;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0 auto;
-    margin-top: 8rem;
-    margin-left: 4.5rem;
+    height: 100vh;
+  }
+
+  #left {
+    flex: 1;
+    justify-self: center;
+    
   }
 
   #right {

@@ -4,9 +4,11 @@ import Centered from '../components/Helper';
 function Projects(props) {
   props.setActive(2);
   return (
+    <>
     <Centered>
     Added Soon
     </Centered>
+    </>
   );
 }
 

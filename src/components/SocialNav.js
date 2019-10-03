@@ -1,40 +1,54 @@
-import React from 'react';
-import styled from 'styled-components';
-import Colors from '../constants/Colors';
-import { FaInstagram, FaReddit, FaTumblr, FaTwitter } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { FaInstagram, FaReddit, FaGithub } from "react-icons/fa";
+import { ReactContext } from '../Context';
 
 const ConDiv = styled.div`
-   position: fixed;
-   bottom: 1rem;
-   right: 1rem;
-   a {
-      transition: all 0.2s;
-      margin: 0 5px;
-      padding: 7px 9px;
-      font-size: 13px;
-      border: 1.5px solid ${Colors.backLight};
-      border-radius: 3px;
-      display: inline-block;
-      text-decoration: none;
-      color: ${Colors.fontColor};
-      background: ${Colors.backColor};
-      &:hover {
-         background-color: ${Colors.primaryColor};
-         border-color: ${Colors.primaryLight};
-      }
-   }
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 23;
+  a {
+    transition: all 0.2s;
+    margin: 0 5px;
+    padding: 7px 9px;
+    font-size: 13px;
+    border: 1.5px solid ${props => props.border};
+    border-radius: 3px;
+    display: inline-block;
+    text-decoration: none;
+    color: ${props => props.color};
+    background: ${props => props.bg};
+    &:hover {
+      background-color: ${props => props.bghv};
+      border-color: ${props => props.borderhv};
+    }
+  }
 `;
 
-
-const SocialNav = (props) => {
-   return (
-      <ConDiv>
-         <a href="/"><FaTumblr /></a>
-         <a href="/"><FaInstagram /></a>
-         <a href="/"><FaReddit /></a>
-         <a href="/"><FaTwitter /></a>
+const SocialNav = props => {
+  const myContext = React.useContext(ReactContext);
+  return (
+    <>
+      <ConDiv
+        border={myContext.mode.backLight}
+        bg={myContext.mode.backColor}
+        borderhv={myContext.mode.primaryLight}
+        bghv={myContext.mode.primaryColor}
+        color={myContext.mode.fontColor}
+      >
+        <a href="/">
+          <FaInstagram />
+        </a>
+        <a href="/">
+          <FaReddit />
+        </a>
+        <a href="/">
+          <FaGithub />
+        </a>
       </ConDiv>
-   )
-}
+    </>
+  );
+};
 
-export default SocialNav
+export default SocialNav;

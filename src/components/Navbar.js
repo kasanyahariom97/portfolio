@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FiHome, FiUser, FiEye, FiMail } from 'react-icons/fi';
-import Colors from '../constants/Colors';
+import { FiHome, FiUser, FiCode, FiMail } from 'react-icons/fi';
+import { ReactContext } from '../Context';
 
 const Nav = styled.div`
    height: 100vh;
-   position: fixed;
+   position: relative;
    top: 0px;
    left: 0;
    overflow: none;
    width: 4rem;
-   background: ${Colors.primaryColor};
-   color: white;
+   background: ${props => props.background};
+   color: ${props => props.color};
 `
 
 const NavMenu = styled.div`
@@ -37,42 +37,47 @@ const NavMenu = styled.div`
       padding: 5px 0;
       display: block;
       font-size: 1.5rem;
-      color: white;
+      color: ${props => props.color};
       text-decoration: none;
    }
 
    a.active {
-      color: ${Colors.activeColor};
+      color: ${props => props.hover};
    }
 
    a:hover {
-      color: ${Colors.accentColor};
+      color: ${props => props.hover};
    }
 `
 
 
 const Navbar = (props) => {
+   const myContext = React.useContext(ReactContext);
    const linkArray = [
       {
          link: '/',
-         child: <FiHome />
+         child: <FiHome />,
+         name: "Home"
       },
       {
          link: '/about',
-         child: <FiUser />
+         child: <FiUser />,
+         name: "About"
       },
       {
          link: '/projects',
-         child: <FiEye />
+         child: <FiCode />,
+         name: "Projects"
       },
       {
          link: '/contact',
-         child: <FiMail />
+         child: <FiMail />,
+         name: "Contact"
       },
    ];
    return (
-      <Nav>
-         <NavMenu className="myNav">
+      <Nav background={myContext.mode.navColor} color={myContext.mode.fontColor}>
+         <NavMenu className="myNav" color={myContext.mode.fontColor} hover={myContext.mode.primaryColor}>
          {
             linkArray.map((e, i) => {
                if(i === props.active){

@@ -3,7 +3,7 @@ import Colors from "../constants/Colors";
 
 const Button = styled.div`
   margin: 1.2rem 0;
-  a {
+  a, button {
     transition: 0.2s all;
     padding: 5px 12px;
     border-radius: 5px;
@@ -11,14 +11,14 @@ const Button = styled.div`
     font-weight: bolder;
     text-transform: uppercase;
     font-size: 12px;
-    color: ${Colors.primaryColor};
+    color: ${props => props.color};
     background: transparent;
     text-decoration: none;
-    border: 2px solid ${Colors.primaryColor};
+    border: 2px solid ${props => props.color};
 
     &:hover {
-      background-color: ${Colors.primaryColor};
-      color: ${Colors.backColor};
+      background-color: ${props => props.color};
+      color: ${props => props.hvColor};
     }
   }
 `;

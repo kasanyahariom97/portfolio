@@ -12,6 +12,13 @@ body {
   font-family: 'Titillium Web', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #2a2a2a;
+  background-image: url('./assets/background_images.jpg');
+  background-size: cover;
+  background-position: center center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 code {
@@ -24,7 +31,7 @@ code {
 }
 
 p, span, div {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 button, a.btn, a.button, .btn, .button {

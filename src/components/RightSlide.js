@@ -1,15 +1,19 @@
 import React from "react";
-import Colors from "../constants/Colors";
 import styled from "styled-components";
 import { DiJsBadge, DiReact, DiNodejsSmall, DiMongodb } from "react-icons/di";
 import { Spring } from "react-spring/renderprops";
+import { ReactContext } from '../Context';
 
 const RightContainer = styled.div`
-  opacity: 0.5;
   font-size: 12rem;
-  color: ${Colors.primaryColor};
+  svg {
+    opacity: 0.5;
+  }
+  color: ${props => props.color};
   @media (max-width: 820px) {
-   display: none;
+    svg {
+      opacity: 0.05;
+    }
   }
 `;
 
@@ -25,6 +29,7 @@ const RightSlide = props => {
   const [currentSlide, setCurrentSlide] = React.useState(
     slidesArray[currentInterval]
   );
+  const myContext = React.useContext(ReactContext);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -46,7 +51,7 @@ const RightSlide = props => {
       config={{ delay: 400, duration: 500 }}
     >
       {e => (
-        <RightContainer style={e} id="right">
+        <RightContainer style={e} id="right" color={myContext.mode.primaryColor}>
           {currentSlide}
         </RightContainer>
       )}

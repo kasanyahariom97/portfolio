@@ -1,29 +1,60 @@
 import React from "react";
-import Container from "../components/ComponentContainer";
-import Picture from "../components/Picture";
-import Header, {Heading} from "../components/Header";
+import Container from "../components/HomeContainer";
+import Header, { Heading } from "../components/Header";
+import styled from "styled-components";
+import RightSlide from "../components/Picture";
+import aboutSvg from "../assets/about.svg";
+import { FiUser } from "react-icons/fi";
+import { ReactContext } from "../Context";
+
+const Colored = styled.span`
+  color: ${props => props.color};
+`;
+
+const MobileOnly = styled.div`
+  display: none;
+  @media (max-width: 820px) {
+    display: block;
+    height: auto;
+    position: fixed;
+    z-index: 0;
+    overflow: none;
+    bottom: 2rem;
+    right: 1rem;
+  }
+`;
 
 function About(props) {
+  const myContext = React.useContext(ReactContext);
   props.setActive(1);
   return (
-    <Container>
-      <Header id="left">
-        <Heading>About</Heading>
-        <p>
-          Lorem ipsum dolor sit amet, usu id populo petentium iracundia. Vix et
-          idque luptatum insolens, id qui nostro sententiae, delectus placerat
-          his ne. Ei vim solum ullum, qui et dolorem intellegam. Ornatus
-          ancillae sea at. Mel no detracto eligendi erroribus, est ut solet
-          maiestatis eloquentiam, eum id adhuc tibique minimum. Te erat
-          intellegat eos. Duo id velit singulis necessitatibus, euismod legimus
-          invidunt no pro. Qui amet alterum similique eu, ad ius euismod debitis
-          officiis. Ceteros nominati dissentiunt pro cu. Eripuit consulatu pro
-          ex, populo luptatum mediocritatem his no, in semper admodum maluisset
-          eum.
-        </p>
-      </Header>
-      <Picture />
-    </Container>
+    <>
+      <Container>
+        <RightSlide>
+          <FiUser />
+        </RightSlide>
+        <Header id="left">
+          <Heading>
+            <Colored color={myContext.mode.primaryColor}>About</Colored>
+          </Heading>
+          <p>
+            Lorem ipsum dolor sit amet, usu id populo petentium iracundia. Vix
+            et idque luptatum insolens, id qui nostro sententiae, delectus
+            placerat his ne. Ei vim solum ullum, qui et dolorem intellegam.
+            <br />
+            <br />
+            ancillae sea at. Mel no detracto eligendi erroribus, est ut solet
+            maiestatis eloquentiam, eum id adhuc tibique minimum. Te erat
+            intellegat eos. Duo id velit singulis necessitatibus, euismod eum.
+          </p>
+        </Header>
+      </Container>
+      <MobileOnly>
+        <RightSlide>
+          <FiUser />
+        </RightSlide>
+      </MobileOnly>
+    </>
   );
 }
 

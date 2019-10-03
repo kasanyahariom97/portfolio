@@ -9,26 +9,41 @@ import Navbar from "./components/Navbar";
 import styled from "styled-components";
 import Logo from "./components/Logo";
 import Container from "./components/StyledContainer";
-import Color from "./constants/Colors";
 import SocialLinks from './components/SocialNav';
+import Model from './Modals/Loading';
+import ColorSwitcher from "./Modals/ColorSwitcher";
+import { ReactContext } from "./Context";
 
 const StyledFragment = styled.div`
   display: flex;
-  color: ${Color.fontColor};
-  background-color: ${Color.backColor};
+  color: ${props => props.color};
+  background-color: ${props => props.bg};
 `;
 
 function App(props) {
+  const myContext = React.useContext(ReactContext);
   const [currentActive, setCurrentActive] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
+  }, []);
 
   const setActive = num => {
     setCurrentActive(num);
   };
 
+  if(isLoading){
+    return <Model />
+  }
+
   return (
-    <StyledFragment>
+    <StyledFragment bg={myContext.mode.backColor} color={myContext.mode.fontColor}>
       <Navbar active={currentActive} />
-      <Container>
+      <ColorSwitcher />
+      <Container bg={myContext.mode.backColor}>
         <Logo />
             <Switch location={props.location}>
               <Route
@@ -51,7 +66,9 @@ function App(props) {
                 path="/projects"
                 render={props => <Projects {...props} setActive={setActive} />}
               />
-              <Route component={NotFound} />
+              <Route
+              render={props => <NotFound {...props} setActive={setActive} />} 
+              />
             </Switch>
       </Container>
       <SocialLinks />
