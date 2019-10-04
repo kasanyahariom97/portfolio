@@ -41,14 +41,11 @@ function About(props) {
             <Colored color={myContext.mode.primaryColor}>About</Colored>
           </Heading>
           <p>
-            Lorem ipsum dolor sit amet, usu id populo petentium iracundia. Vix
-            et idque luptatum insolens, id qui nostro sententiae, delectus
-            placerat his ne. Ei vim solum ullum, qui et dolorem intellegam.
+            Hello I'm Harry I'm a mern stack and react native developer as well as
+            designer
             <br />
             <br />
-            ancillae sea at. Mel no detracto eligendi erroribus, est ut solet
-            maiestatis eloquentiam, eum id adhuc tibique minimum. Te erat
-            intellegat eos. Duo id velit singulis necessitatibus, euismod eum.
+            with 2+ years of experience. &lt;Pardom the interruption: more info will be added soon &gt;
           </p>
         </Header>
       </Container>
