@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Colors from "../constants/Colors";
 
 const Button = styled.div`
   margin: 1.2rem 0;

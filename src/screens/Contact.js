@@ -6,6 +6,8 @@ import RightSlide from "../components/Picture";
 import Form from "../components/Form";
 import { FiMail } from "react-icons/fi";
 import { ReactContext } from "../Context";
+import Navbar from "../components/Navbar";
+import ContainerComponent from "../components/StyledContainer";
 
 const Colored = styled.span`
   color: ${props => props.color};
@@ -29,6 +31,8 @@ function Contact(props) {
   props.setActive(3);
   return (
     <>
+    <Navbar active={props.currentActive} />
+      <ContainerComponent bg={myContext.mode.backColor}>
       <Container>
         <RightSlide>
           <FiMail />
@@ -45,6 +49,7 @@ function Contact(props) {
           <FiMail />
         </RightSlide>
       </MobileOnly>
+      </ContainerComponent>
     </>
   );
 }

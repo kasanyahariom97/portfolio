@@ -6,7 +6,7 @@ import { ReactContext } from '../Context';
 
 const Nav = styled.div`
    height: 100vh;
-   position: relative;
+   position: sticky;
    top: 0px;
    left: 0;
    overflow: none;

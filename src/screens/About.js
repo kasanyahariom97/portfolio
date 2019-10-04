@@ -3,9 +3,10 @@ import Container from "../components/HomeContainer";
 import Header, { Heading } from "../components/Header";
 import styled from "styled-components";
 import RightSlide from "../components/Picture";
-import aboutSvg from "../assets/about.svg";
 import { FiUser } from "react-icons/fi";
 import { ReactContext } from "../Context";
+import Navbar from "../components/Navbar";
+import ContainerComponent from "../components/StyledContainer";
 
 const Colored = styled.span`
   color: ${props => props.color};
@@ -29,6 +30,8 @@ function About(props) {
   props.setActive(1);
   return (
     <>
+    <Navbar active={props.currentActive} />
+      <ContainerComponent bg={myContext.mode.backColor}>
       <Container>
         <RightSlide>
           <FiUser />
@@ -54,6 +57,7 @@ function About(props) {
           <FiUser />
         </RightSlide>
       </MobileOnly>
+      </ContainerComponent>
     </>
   );
 }

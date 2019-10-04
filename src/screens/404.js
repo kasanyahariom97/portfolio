@@ -3,6 +3,7 @@ import Container from "../components/StyledContainer";
 import styled from "styled-components";
 import { Spring } from "react-spring/renderprops";
 import {ReactContext} from "../Context";
+import Navbar from '../components/Navbar';
 
 const NotFoundEl = styled.div`
   display: flex;
@@ -27,6 +28,9 @@ function NotFound(props) {
   const myContext = React.useContext(ReactContext);
   props.setActive(404);
   return (
+    <>
+    <Navbar active={props.currentActive} />
+      <Container bg={myContext.mode.backColor}>
     <Spring
       from={{ opacity: 0 }}
       to={{ opacity: 1 }}
@@ -42,6 +46,8 @@ function NotFound(props) {
         </Container>
       )}
     </Spring>
+    </Container>
+    </>
   );
 }
 

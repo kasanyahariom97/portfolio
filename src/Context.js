@@ -10,13 +10,14 @@ class ReactProvider extends Component {
       this.switchMode = this.switchMode.bind(this);
    }
 
-   current = true;
+   current = 'true';
    state = {
       currentMode: dark
    }
 
-   switchMode() {
-      if(this.current){
+   componentDidMount() {
+      this.current = localStorage.getItem('current') || "false";
+      if(this.current === 'true'){
          this.setState({
             currentMode: bright
          });
@@ -25,11 +26,19 @@ class ReactProvider extends Component {
             currentMode: dark
          });
       }
-      this.current = !this.current;
+   }
+
+   switchMode() {
+      if(this.current === 'true'){
+         localStorage.setItem('current', 'false');
+      }else {
+         localStorage.setItem('current', 'true');
+      }
+      window.location.reload();
    }
   render() {
     return (
-      <ReactContext.Provider value={{mode: this.state.currentMode, switch: this.switchMode}}>
+      <ReactContext.Provider value={{mode: this.state.currentMode, switch: this.switchMode, current: this.current}}>
         {this.props.children}
       </ReactContext.Provider>
     );

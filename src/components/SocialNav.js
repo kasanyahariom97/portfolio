@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaInstagram, FaReddit, FaGithub } from "react-icons/fa";
 import { ReactContext } from '../Context';
+import MyAccounts from '../constants/Accounts';
 
 const ConDiv = styled.div`
   position: fixed;
@@ -37,13 +38,13 @@ const SocialNav = props => {
         bghv={myContext.mode.primaryColor}
         color={myContext.mode.fontColor}
       >
-        <a href="/">
+        <a href={MyAccounts.insta}>
           <FaInstagram />
         </a>
-        <a href="/">
+        <a href={MyAccounts.reddit}>
           <FaReddit />
         </a>
-        <a href="/">
+        <a href={MyAccounts.github}>
           <FaGithub />
         </a>
       </ConDiv>
