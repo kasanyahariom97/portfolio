@@ -66,9 +66,9 @@ const Navbar = (props) => {
          name: "About"
       },
       {
-         link: '/projects',
+         link: '/Portfolio',
          child: <FiCode />,
-         name: "Projects"
+         name: "Portfolio"
       },
       {
          link: '/contact',

@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
 import Home from "./screens/Home";
-import Projects from "./screens/Projects";
+import Portfolio from "./screens/Portfolio";
 import NotFound from "./screens/404";
 import Logo from "./components/Logo";
 import SocialLinks from "./components/SocialNav";
@@ -87,9 +87,9 @@ function App(props) {
           />
           <Route
             exact
-            path="/projects"
+            path="/Portfolio"
             render={props => (
-              <Projects
+              <Portfolio
                 {...props}
                 setActive={setActive}
                 currentActive={currentActive}
