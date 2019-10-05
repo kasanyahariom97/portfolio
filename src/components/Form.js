@@ -56,7 +56,7 @@ const encode = data => {
     .join("&");
 }
 
-export default class Form extends Reac.Component {
+export default class Form extends React.Component {
 
   constructor(props) {
     super(props);
@@ -66,9 +66,12 @@ export default class Form extends Reac.Component {
       subject: "",
       message: ""
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
+    e.preventDefault();
     fetch('/',
     {
       method: "POST",
@@ -78,6 +81,12 @@ export default class Form extends Reac.Component {
     )
     .then(() => alert("Success!"))
     .catch(e => alert("Error"));
+    this.setState({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
   }
 
   handleChange(e) {
@@ -91,7 +100,7 @@ export default class Form extends Reac.Component {
     const myContext = this.context;
     return (
       <div>
-      <BigContainer method="POST" name="contact" >
+      <BigContainer method="POST" name="contact" onSubmit={this.handleSubmit} >
       <input type="hidden" name="form-name" value="contact" />
       <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.name} onChange={this.handleChange}/>
       <Info type="text" name="email" id="email" placeholder="Email" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.email} onChange={this.handleChange} />
