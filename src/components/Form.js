@@ -61,10 +61,11 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
+      "name": "",
+      "email": "",
+      "subject": "",
+      "message": "",
+      "code": ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,13 +80,13 @@ export default class Form extends React.Component {
       body: encode({ "form-name": "contact", ...this.state })
     }
     )
-    .then(() => alert("Success!"))
-    .catch(e => alert("Error"));
+    .then(() => this.setState({"code": "Success"}))
+    .catch(e => this.setState({"code": "Success"}));
     this.setState({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
+      "name": "",
+      "email": "",
+      "subject": "",
+      "message": "",
     });
   }
 
@@ -100,6 +101,7 @@ export default class Form extends React.Component {
     const myContext = this.context;
     return (
       <div>
+      <span>{this.state.code}</span>
       <BigContainer method="POST" name="contact" onSubmit={this.handleSubmit} >
       <input type="hidden" name="form-name" value="contact" />
       <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.name} onChange={this.handleChange}/>
