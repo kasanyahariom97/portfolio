@@ -54,7 +54,8 @@ const Form = props => {
   const myContext = React.useContext(ReactContext);
   return (
     <div>
-      <BigContainer method="POST" data-netlify="true">
+      <BigContainer method="POST" name="contact" >
+        <input type="hidden" name="form-name" value="contact" />
         <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
         <Info type="text" name="email" id="email" placeholder="Email" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
         <Info type="text" name="subject" id="subject" placeholder="Subject" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>

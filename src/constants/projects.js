@@ -10,7 +10,7 @@ const MyProjects = [
    {
       title: 'Example Project',
       url: '/projects',
-      img: images['about.svg']
+      img: images['background_images.jpg']
    }
 ]
 
