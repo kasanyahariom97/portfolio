@@ -50,24 +50,60 @@ const BigContainer = styled.form`
   flex-direction: column;
 `;
 
-const Form = props => {
-  const myContext = React.useContext(ReactContext);
-  return (
-    <div>
-      <BigContainer method="POST" name="contact" >
-        <input type="hidden" name="form-name" value="contact" />
-        <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
-        <Info type="text" name="email" id="email" placeholder="Email" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
-        <Info type="text" name="subject" id="subject" placeholder="Subject" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
-        <MessageBox name="message" id="message" placeholder="Message" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor}/>
-        <Button color={myContext.mode.primaryColor} hvColor={myContext.mode.backColor}>
-          <button type="submit" name="submit">
-            Submit
-          </button>
-        </Button>
-      </BigContainer>
-    </div>
-  );
-};
+const encode = data => {
+  return Object.keys(data)
+    .map(e => encodeURIComponent(e) + '=' + encodeURIComponent(data[e]) )
+    .join("&");
+}
 
-export default Form;
+export default class Form extends Reac.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    }
+  }
+
+  handleSubmit(e){
+    fetch('/',
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state })
+    }
+    )
+    .then(() => alert("Success!"))
+    .catch(e => alert("Error"));
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  static contextType = ReactContext;
+  render() {
+    const myContext = this.context;
+    return (
+      <div>
+      <BigContainer method="POST" name="contact" >
+      <input type="hidden" name="form-name" value="contact" />
+      <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.name} onChange={this.handleChange}/>
+      <Info type="text" name="email" id="email" placeholder="Email" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.email} onChange={this.handleChange} />
+      <Info type="text" name="subject" id="subject" placeholder="Subject" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.subject} onChange={this.handleChange} />
+      <MessageBox name="message" id="message" placeholder="Message" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.message} onChange={this.handleChange} />
+      <Button color={myContext.mode.primaryColor} hvColor={myContext.mode.backColor}>
+        <button type="submit" name="submit">
+          Submit
+        </button>
+      </Button>
+    </BigContainer>
+      </div>
+    )
+  }
+}
