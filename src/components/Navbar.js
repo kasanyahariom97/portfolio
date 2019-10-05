@@ -7,7 +7,7 @@ import { ReactContext } from '../Context';
 const Nav = styled.div`
    height: 100vh;
    position: sticky;
-   top: 0px;
+   top: 0;
    left: 0;
    overflow: none;
    width: 4rem;
@@ -20,11 +20,12 @@ const NavMenu = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   position: absolute;
+   position: relative;
    top: 50%;
    margin-top: -120px;
    flex: 1;
    width: 100%;
+   left: 0;
 
    a {
       transition: 0.4s all;

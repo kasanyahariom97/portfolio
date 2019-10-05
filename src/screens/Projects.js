@@ -15,7 +15,7 @@ const ProjectContainer = styled.div`
 const ProjectCotains = styled.div`
   width: 90%;
   margin: 0 auto;
-  margin-top: 4.5rem;
+  margin-top: 5.5rem;
   padding: 1rem;
 `;
 
