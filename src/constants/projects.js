@@ -9,9 +9,34 @@ function importAll(r) {
 const MyProjects = [
    {
       title: 'Example Project',
-      url: '/projects',
+      url: '/portfolio',
       img: images['background_images.jpg']
-   }
+   },
+   {
+      title: 'Example Project',
+      url: '/portfolio',
+      img: images['background_images.jpg']
+   },
+   {
+      title: 'Example Project',
+      url: '/portfolio',
+      img: images['background_images.jpg']
+   },
+   {
+      title: 'Example Project',
+      url: '/portfolio',
+      img: images['background_images.jpg']
+   },
+   {
+      title: 'Example Project',
+      url: '/portfolio',
+      img: images['background_images.jpg']
+   },
+   {
+      title: 'Example Project',
+      url: '/portfolio',
+      img: images['background_images.jpg']
+   },
 ]
 
 export default MyProjects;
