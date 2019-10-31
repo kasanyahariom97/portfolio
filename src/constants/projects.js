@@ -8,34 +8,22 @@ function importAll(r) {
 
 const MyProjects = [
    {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
+      title: 'Jack: A twitter clone',
+      sub: 'Using: React, Express, MongoDB',
+      url: 'https://jackapp.netlify.com/',
+      img: images['jack_app.png']
    },
    {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
+      title: 'Clewis a shoe brand.',
+      sub: 'Using: Wordpress/PHP, MySQL',
+      url: 'http://clewis.in',
+      img: images['clewis_site.jpg']
    },
    {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
-   },
-   {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
-   },
-   {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
-   },
-   {
-      title: 'Example Project',
-      url: '/portfolio',
-      img: images['background_images.jpg']
+      title: 'React Note App',
+      sub: 'Using: React, Express, MongoDB',
+      url: 'https://react-node-note-app.herokuapp.com/',
+      img: images['react_note.png']
    },
 ]
 

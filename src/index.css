@@ -37,6 +37,10 @@ button, a.btn, a.button, .btn, .button {
   font-family: 'Montserrat', sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 @keyframes myAnimation {
   0% {
     width: 0%;

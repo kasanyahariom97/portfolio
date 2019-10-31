@@ -71,8 +71,9 @@ const Project = (props) => {
       </div>
       <div className="second">
          <h5 className="heading">{props.title}</h5>
+         <p>{props.sub}</p>
          <Button color={myContext.mode.primaryColor} hvColor={myContext.mode.backColor}>
-            <a href={props.url}>
+            <a href={props.url} target="_blank" rel="noopener noreferrer">
                View&nbsp;<FiEye />
             </a>
          </Button>

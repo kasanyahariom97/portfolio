@@ -28,6 +28,7 @@ const MessageBox = styled.textarea`
   background: ${props => props.bg};
   border: none;
   outline: none;
+  resize: none;
   border-bottom: 3px solid ${props => props.bg};
   padding: 1rem;
   margin: 0.5rem auto;
@@ -48,6 +49,11 @@ const BigContainer = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  .mail-info {
+    font-weight: bold;
+    color: ${props => props.color};
+  }
 `;
 
 const encode = data => {
@@ -71,17 +77,34 @@ export default class Form extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e){
+  async handleSubmit(e){
     e.preventDefault();
-    fetch('/',
+    const data = {
+      name: this.state["name"],
+      email: this.state["email"],
+      sub: this.state["subject"],
+      msg: this.state["message"]
+    }
+    const jdata = await fetch('https://contactapiharry.herokuapp.com/',
     {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...this.state })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
     }
-    )
-    .then(() => this.setState({"code": "Success"}))
-    .catch(e => this.setState({"code": "Success"}));
+    );
+    if(jdata.ok) {
+      const myData = await jdata.json();
+      this.setState(state => ({
+        ...state,
+        "code": myData.message || "Done."
+      }))
+    }else {
+      const myData = await jdata.json();
+      this.setState(state => ({
+        ...state,
+        "code": "Error"
+      }))
+    }
     this.setState({
       "name": "",
       "email": "",
@@ -105,14 +128,15 @@ export default class Form extends React.Component {
       <BigContainer method="POST" name="contact" onSubmit={this.handleSubmit} >
       <input type="hidden" name="form-name" value="contact" />
       <Info type="text" name="name" id="name" placeholder="Name" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.name} onChange={this.handleChange}/>
-      <Info type="text" name="email" id="email" placeholder="Email" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.email} onChange={this.handleChange} />
+      <Info type="text" name="email" id="email" placeholder="Email *" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.email} onChange={this.handleChange} />
       <Info type="text" name="subject" id="subject" placeholder="Subject" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.subject} onChange={this.handleChange} />
-      <MessageBox name="message" id="message" placeholder="Message" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.message} onChange={this.handleChange} />
+      <MessageBox name="message" id="message" placeholder="Message *" bg={myContext.mode.navColor} color={myContext.mode.lightColor} bBottom={myContext.mode.primaryColor} value={this.state.message} onChange={this.handleChange} />
       <Button color={myContext.mode.primaryColor} hvColor={myContext.mode.backColor}>
         <button type="submit" name="submit">
           Submit
         </button>
       </Button>
+      <p className="mail-info" color={myContext.mode.lightColor}>Email: kasanyahariom97@gmail.com</p>
     </BigContainer>
       </div>
     )

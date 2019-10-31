@@ -50,6 +50,7 @@ function App(props) {
       <StyledFragment
         bg={myContext.mode.backColor}
         color={myContext.mode.fontColor}
+        aColor={myContext.mode.primaryColor}
       >
         <Switch location={props.location}>
           <Route

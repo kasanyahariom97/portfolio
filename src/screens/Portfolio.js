@@ -7,7 +7,7 @@ import data from '../constants/projects';
 
 const ProjectContainer = styled.div`
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,13 +26,16 @@ const ProjectContainer = styled.div`
   }
 
   .container {
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     @media (max-width: 720px) {
       display: block;
-      margin-top: 3rem;
+      width: 90%;
+      margin: 3rem auto;
+      margin-top: 4rem;
     }
   }
 
@@ -96,7 +99,7 @@ function Projects(props) {
         <div className="container">
         {
           data.map((e, i) => (
-            <Project key={i} img={e.img} url={e.url} title={e.title} />
+            <Project key={i} img={e.img} url={e.url} title={e.title} sub={e.sub} />
           ))
         }
         </div>
