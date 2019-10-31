@@ -54,7 +54,7 @@ function Home(props) {
                   Web Designer
                   <Typing.Reset count={-1} delay={500} />
                   <Typing.Delay ms={1000} />
-                  App Developer
+                  Mobile Developer
                   <Typing.Reset count={-1} delay={1000} />
                   <Typing.Delay ms={1000} />
                 </Typing>
